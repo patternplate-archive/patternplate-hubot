@@ -108,4 +108,4 @@ Robot icon by [Edward Boatman](https://thenounproject.com/edward/).
 [patternplate-url]: /sinnerschrader/patternplate
 
 [heroku-image]: https://img.shields.io/badge/deploy%20to-heroku-7059bc.svg?style=flat-square
-[heroku-url]: https://heroku.com/deploy
+[heroku-url]: https://heroku.com/deploy?https://github.com/sinnerschrader/patternplate-hubot
