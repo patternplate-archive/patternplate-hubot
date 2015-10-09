@@ -1,6 +1,5 @@
 {
   "name": "patternplate-hubot",
-  "version": "0.1.0",
   "description": "patternplate's ever-helpful robot",
   "scripts": {
     "start": "bin/hubot --name 'patternplate-hubot' -a gitter2",
@@ -16,7 +15,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/marionebl/patternplate-hubot.git"
+    "url": "https://github.com/sinnerschrader/patternplate-hubot.git"
   },
   "license": "MIT",
   "dependencies": {

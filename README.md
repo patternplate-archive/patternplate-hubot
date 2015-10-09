@@ -63,7 +63,7 @@ Here are some notes to get you coding real quick.
 
 Fetch, install and start the default watch task
 ```
-git clone https://github.com/marionebl/patternplate-hubot.git
+git clone https://github.com/sinnerschrader/patternplate-hubot.git
 cd patternplate-hubot
 npm install
 npm start
