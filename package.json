@@ -2,7 +2,7 @@
   "name": "patternplate-hubot",
   "description": "patternplate's ever-helpful robot",
   "scripts": {
-    "start": "bin/hubot --name 'patternplate-hubot' -a gitter2",
+    "start": "bin/hubot --name 'patternbot' -a gitter2",
     "test": "echo 'No unit tests yet.'",
     "commit": "commitizen"
   },
