@@ -7,7 +7,7 @@
 </div>
 <h1 align="center">:speech_balloon: patternplate-hubot</h1>
 <p align="center">
-  <b><a href="#about">About</a></b> | <b><a href="#installation">Installation</a></b> | <b><a href="scripts">Scripts</a></b> | <b><a href="deployment">Deployment</a></b> | <b><a href="Development">Development</a></b> | <b><a href="./contributing.md">Contributing</a></b>
+  <b><a href="#about">About</a></b> | <b><a href="#installation">Installation</a></b> | <b><a href="#scripts">Scripts</a></b> | <b><a href="#deployment">Deployment</a></b> | <b><a href="#development">Development</a></b> | <b><a href="./contributing.md">Contributing</a></b>
 </p>
 <br />
 > Health
