@@ -50,11 +50,68 @@ Currently patternplate-hubot has the following modules enabled:
 * hubot-shipit
 
 ## Deployment
-Deployment of hubot is easy-as-pie. Just hit the heroku button and you should be good to go. Remember to set the appropriate environment variables for your configuration:
+Deployment of hubot is easy-as-pie. You'll be up and running in a few simple steps.
+
+### Heroku setup
+The initial setup couldn't be easier.
+* [![Deploy to Heroku][heroku-image]][heroku-url]
+* In the deployment dialog, choose a **heroku application name** and take note of it
+* Done!
+
+### Basic configuration
+For patternplate-hubot to work reliably, you'll have to do a bit of configuration.
+* Create a new Github user for your patternplate-hubot
+* Login to gitter with patternplate-hubot's account
+* Join the gitter rooms patternplate-hubot should be active in
+* Retrieve the **gitter access token** for patternplate-hubot's account at [developer.gitter.im/apps](https://developer.gitter.im/apps)
+* Retrieve the **heroku app web url** by using heroku cli:
 ```bash
-HUBOT_GITTER2_TOKEN=**** # your gitter access token
-HUBOT_GITTER2_IGNORE_ROOMS=**** # rooms for patternplate-hubot to ignore
+heroku apps:info --shell --app <heroku-app-name> | grep web-url | cut -d= -f2
 ```
+* Set the appropriate environment variables for your patternplate-hubot.
+```bash
+heroku config:set HUBOT_GITTER2_TOKEN=<gitter-access-token> --app <heroku-app-name>
+heroku config:set HUBOT_HEROKU_KEEPALIVE_URL=<heroku-app-web-url> --app <heroku-app-name>
+```
+* Restart your heroku application
+```bash
+heroku restart --app <heroku-app-name>
+```
+* Well done! Your first patternplate-hubot instance is ready for duty. :fist:
+
+### Always on configuration
+Heroku's free plan requires your brand new app to sleep at least six hours a day. By default patternplate-hubot will sleep in the hours from 22:00 to 06:00. To provide patternplate-hubot 24/7 you'll want two heroku instances running on the schedule outlined below.
+
+| :clock3: Time          | :sunny: Dayshift      | :crescent_moon:  Nightshift|
+|:--------------|:--------------|:--------------|
+| 06:00         | :coffee: Wakes up      | :sleepy: Goes to sleep |
+| 06:00 - 22:00 | :speech_balloon: On Duty       | :sleeping: Sleeping      |
+| 22:00         | :sleepy: Goes to sleep | :coffee: Wakes up      |
+| 22:00 - 06:00 | :sleeping: Sleeping      | :speech_balloon: On Duty       |
+
+
+
+* Create a second instance following the steps at [Basic configuration](#basic-configuration)
+* Choose distinct names for your instances. We used `*-dayshift` and `*-nightshift`
+* Configure your nightshift instance to be awake at night:
+```bash
+heroku config:set HUBOT_HEROKU_WAKEUP_TIME=22:00 --app <heroku-app-name>
+heroku config:set HUBOT_HEROKU_SLEEP_TIME=06:00 --app <heroku-app-name>
+```
+* For **each of your instances** do:
+* Create a **scheduler** associated to the instance and open its configuration interface
+```bash
+# this is free but you'll need a verified heroku account (with credit card information) for this
+heroku addons:create scheduler:standard --app <heroku-app-name>
+heroku addons:open scheduler --app <heroku-app-name>
+```
+* Hit `Add a new job`
+* Enter the following command into the `$` field
+```bash
+curl ${HUBOT_HEROKU_KEEPALIVE_URL}heroku/keepalive
+```
+* Set the next due field to the time when you want this intance to wake up. Typically this is `06:00` for your dayshift and `22:00` for your nightshift instance.
+* Boom! patternplate-hubot now is always on duty.
 
 ## Development
 You dig patternplate-hubot and want to submit a pull request? Awesome!
