@@ -28,6 +28,8 @@
 [![Deploy to Heroku][heroku-image]][heroku-url]
 
 ## About
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/sinnerschrader/patternplate-hubot.svg)](https://greenkeeper.io/)
 patternplate-hubot is patternplate's ever-helpful robot living in our gitter room. It is a proud descendant of Github's famous hubot and as such, helps with everything a robot could do and some more. Come visit it on [gitter][gitter-url].
 
 ## Installation
